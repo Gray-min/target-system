@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlzkj.app.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.zlzkj.app.model.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="role" property="role" jdbcType="INTEGER" />
+    <result column="mail" property="mail" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="birth" property="birth" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="picture" property="picture" jdbcType="VARCHAR" />
+    <result column="question1" property="question1" jdbcType="VARCHAR" />
+    <result column="question2" property="question2" jdbcType="VARCHAR" />
+    <result column="question3" property="question3" jdbcType="VARCHAR" />
+    <result column="answer1" property="answer1" jdbcType="VARCHAR" />
+    <result column="answer2" property="answer2" jdbcType="VARCHAR" />
+    <result column="answer3" property="answer3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, account, password, role, mail, gender, name, age, birth, phone, picture, question1, 
+    question2, question3, answer1, answer2, answer3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from x_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from x_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlzkj.app.model.User" >
+    insert into x_user (id, account, password, 
+      role, mail, gender, 
+      name, age, birth, phone, 
+      picture, question1, question2, 
+      question3, answer1, answer2, 
+      answer3)
+    values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{role,jdbcType=INTEGER}, #{mail,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{birth,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{picture,jdbcType=VARCHAR}, #{question1,jdbcType=VARCHAR}, #{question2,jdbcType=VARCHAR}, 
+      #{question3,jdbcType=VARCHAR}, #{answer1,jdbcType=VARCHAR}, #{answer2,jdbcType=VARCHAR}, 
+      #{answer3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlzkj.app.model.User" >
+    insert into x_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="role != null" >
+        role,
+      </if>
+      <if test="mail != null" >
+        mail,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="birth != null" >
+        birth,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="picture != null" >
+        picture,
+      </if>
+      <if test="question1 != null" >
+        question1,
+      </if>
+      <if test="question2 != null" >
+        question2,
+      </if>
+      <if test="question3 != null" >
+        question3,
+      </if>
+      <if test="answer1 != null" >
+        answer1,
+      </if>
+      <if test="answer2 != null" >
+        answer2,
+      </if>
+      <if test="answer3 != null" >
+        answer3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=INTEGER},
+      </if>
+      <if test="mail != null" >
+        #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="birth != null" >
+        #{birth,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="question1 != null" >
+        #{question1,jdbcType=VARCHAR},
+      </if>
+      <if test="question2 != null" >
+        #{question2,jdbcType=VARCHAR},
+      </if>
+      <if test="question3 != null" >
+        #{question3,jdbcType=VARCHAR},
+      </if>
+      <if test="answer1 != null" >
+        #{answer1,jdbcType=VARCHAR},
+      </if>
+      <if test="answer2 != null" >
+        #{answer2,jdbcType=VARCHAR},
+      </if>
+      <if test="answer3 != null" >
+        #{answer3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlzkj.app.model.User" >
+    update x_user
+    <set >
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        role = #{role,jdbcType=INTEGER},
+      </if>
+      <if test="mail != null" >
+        mail = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="birth != null" >
+        birth = #{birth,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="question1 != null" >
+        question1 = #{question1,jdbcType=VARCHAR},
+      </if>
+      <if test="question2 != null" >
+        question2 = #{question2,jdbcType=VARCHAR},
+      </if>
+      <if test="question3 != null" >
+        question3 = #{question3,jdbcType=VARCHAR},
+      </if>
+      <if test="answer1 != null" >
+        answer1 = #{answer1,jdbcType=VARCHAR},
+      </if>
+      <if test="answer2 != null" >
+        answer2 = #{answer2,jdbcType=VARCHAR},
+      </if>
+      <if test="answer3 != null" >
+        answer3 = #{answer3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlzkj.app.model.User" >
+    update x_user
+    set account = #{account,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      role = #{role,jdbcType=INTEGER},
+      mail = #{mail,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      birth = #{birth,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR},
+      question1 = #{question1,jdbcType=VARCHAR},
+      question2 = #{question2,jdbcType=VARCHAR},
+      question3 = #{question3,jdbcType=VARCHAR},
+      answer1 = #{answer1,jdbcType=VARCHAR},
+      answer2 = #{answer2,jdbcType=VARCHAR},
+      answer3 = #{answer3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="select_userinfo" resultMap="BaseResultMap" parameterType="com.zlzkj.app.model.User" >
+    select 
+    *
+    from x_user
+    where account = #{account,jdbcType=VARCHAR}
+  </select>
+   <select id="select_password" resultMap="BaseResultMap" parameterType="com.zlzkj.app.model.User" >
+    select 
+    *
+    from x_user
+    where account = #{account,jdbcType=VARCHAR}
+  </select>
+  <update id="modify_password" parameterType="com.zlzkj.app.model.User" >
+  update 
+  x_user 
+  set password=#{password,jdbcType=VARCHAR}
+  where account=#{account,jdbcType=VARCHAR}
+  </update>
+</mapper>
