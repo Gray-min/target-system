@@ -82,6 +82,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
   <update id="updateByPrimaryKey" parameterType="com.zlzkj.app.model.Point" >
     update x_point
     set account = #{account,jdbcType=VARCHAR},

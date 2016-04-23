@@ -52,5 +52,12 @@ public class PointService {
 		String sql="SELECT * FROM x_target WHERE project ='"+project+"'";
 		return sqlRunner.select(sql);
 	}
+
+	public Integer savepoint(String account, String project,String point) {
+		String sql="UPDATE x_point SET point='"+point+"',status=1 WHERE account='"+account+"' AND project='"+project+"'";
+ return sqlRunner.update(sql);
+		
+	}
+	
 }
 

@@ -12,6 +12,6 @@ public interface PointMapper {
     Point selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Point record);
-
+    
     int updateByPrimaryKey(Point record);
 }

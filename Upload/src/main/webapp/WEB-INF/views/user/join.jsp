@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			</tr>
 		</c:forEach>
-		<input type="submit" value="提交">
+		<!-- <input type="submit" value="提交"> -->
 		</form>
 		</table>
 		

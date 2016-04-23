@@ -108,8 +108,14 @@ public class UserController extends BaseController{
 		{
 			target.add(t[i]);
 		}
+		
+		ArrayList<String> score=new ArrayList<String>();
+		for(int i=0;i<s.length;i++)
+		{
+			score.add(s[i]);
+		}
 		request.getSession().setAttribute("target",target);
-		//request.getSession().setAttribute("score", s);
+		request.getSession().setAttribute("score", score);
 		model.addAttribute("doit",PointService.findtarget(project));
 		return "user/doit";
 	}
@@ -159,6 +165,22 @@ public class UserController extends BaseController{
 		TargetService.save(t);
 		model.addAttribute("users",userService.findAllUser());
 		return "user/chose";
+	}
+	@RequestMapping(value = "point",method=RequestMethod.POST)
+	public String point(Model model,HttpServletRequest request,HttpServletResponse response) {
+		String[] p = request.getParameterValues("point");
+		String project =request.getParameter("project");
+		 String point="";
+         for(int i=0;i<p.length;i++)
+         {
+         if(i==p.length-1){point=point+p[i];}
+         else{
+        point=point+p[i]+"@";}
+         //System.out.println(target[i]);
+         }
+		Point po=new Point();
+		PointService.savepoint((String)request.getSession().getAttribute("account"), project,point);
+		return "user/join";
 	}
 	@RequestMapping(value = "chose",method=RequestMethod.POST)
 	public String chose(Model model,HttpServletRequest request,HttpServletResponse response) {
