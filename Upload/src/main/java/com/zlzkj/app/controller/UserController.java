@@ -49,7 +49,7 @@ public class UserController extends BaseController{
 	@Autowired
 	private TargetService TargetService;
 	
-	@RequestMapping(value={"/"},method=RequestMethod.POST)
+	/*@RequestMapping(value={"/"},method=RequestMethod.POST)
 	public String info(Model model,HttpServletRequest request,HttpServletResponse response
 			,@RequestParam("ImportFile") MultipartFile uploadFile) {
 		
@@ -72,7 +72,7 @@ public class UserController extends BaseController{
 			System.out.println("图片绝对路径："+FilePath);
 		}
 		return "index/index";
-	}
+	}*/
 	
 /*	@RequestMapping(value={"/findpic"})
 	public String findPic(Model model,HttpServletRequest request,HttpServletResponse response) {

@@ -1,9 +1,9 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://zlzkj.com/tags" prefix="z"%>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +29,7 @@
                             <div class="li-item"><em class="scm li-ico ic1"></em>用户中心<span class="scm arrow"></span></div>
                             <dl>
                                  <dd>
-                                    <a href="info" class="dd-item" target="iframe0">个人信息<span class="scm dd-ar"></span></a>
+                                    <a href="info" class="dd-item" target="iframe0"><spring:message code="left.User.Info" /><span class="scm dd-ar"></span></a>
                              
                                 </dd>
                                 <dd>
@@ -63,7 +63,7 @@
                             </dl>
                         </li>
                         <li>
-                            <div class="li-item"><em class="scm li-ico ic3"></em>啊啊啊啊<span class="scm arrow"></span></div>
+                         <!--    <div class="li-item"><em class="scm li-ico ic3"></em>啊啊啊啊<span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
                                     <a href="#" class="dd-item">校友高级管理<span class="scm dd-ar"></span></a>
@@ -192,8 +192,8 @@
                                     <a href="#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
                                 </dd>
                             </dl>
-                        </li>
-                    </ul>
+                        </li>-->
+                    </ul> 
                 </div>
             </div>
     		<div class="ad-comment-box" id="ad-comment">
@@ -233,7 +233,7 @@
                             <div class="ad-welcom">
                                 <div class="ad-wel-img"><img src="${__static__}/images/min_logo.png" height="36" width="36"></div>
                                 <div class="ad-wel-text">
-                                    <div class="font-wel">欢迎您！<strong>${sessionScope.name}</strong></div>
+                                    <div class="font-wel">欢迎您！<strong>${sessionScope.name}</strong>	<a href="${z:u('/') }?language=${language=='zh_CN'?'en':'zh_CN' }" class="language">${language=='zh_CN'?'English':'Chinese' }</a></div>
                                     <div class="font-wel"><a href='${z:u("logout")}'><strong>【退出】</strong></a></div>
                                 </div>
                             </div>

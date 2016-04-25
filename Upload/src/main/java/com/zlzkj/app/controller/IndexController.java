@@ -38,7 +38,7 @@ public class IndexController extends BaseController{
 	@RequestMapping(value={"/"})
 	public String index(Model model,HttpServletRequest request,HttpServletResponse response) {
 		
-		return "index/login";
+		return "index/index";
 	}
 	
 	/*@RequestMapping(value = "regist")
