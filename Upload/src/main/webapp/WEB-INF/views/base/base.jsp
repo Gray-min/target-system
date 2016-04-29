@@ -26,33 +26,33 @@
                 <div class="ad-list">
                     <ul>
                         <li>
-                            <div class="li-item"><em class="scm li-ico ic1"></em>用户中心<span class="scm arrow"></span></div>
+                            <div class="li-item"><em class="scm li-ico ic1"></em><spring:message code="left.User.Center"/><span class="scm arrow"></span></div>
                             <dl>
                                  <dd>
                                     <a href="info" class="dd-item" target="iframe0"><spring:message code="left.User.Info" /><span class="scm dd-ar"></span></a>
                              
                                 </dd>
                                 <dd>
-                                    <a href="change_pass" class="dd-item" target="iframe0">密码修改<span class="scm dd-ar"></span></a>
+                                    <a href="change_pass" class="dd-item" target="iframe0"><spring:message code="left.User.Modify_Password" /><span class="scm dd-ar"></span></a>
                                    
                                 </dd>
                                 <dd>
-                                    <a href="prove" class="dd-item" target="iframe0">密保问题修改<span class="scm dd-ar"></span></a>
+                                    <a href="prove" class="dd-item" target="iframe0"><spring:message code="left.User.Security.Question.Modification" /><span class="scm dd-ar"></span></a>
                                    
                                 </dd>
                             </dl>
                         </li>
                         <li>
-                            <div class="li-item"><em class="scm li-ico ic2"></em>项目管理<span class="scm arrow"></span></div>
+                            <div class="li-item"><em class="scm li-ico ic2"></em><spring:message code="left.Project.Manage" /><span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="#" class="dd-item">我的项目<span class="scm dd-ar"></span></a>
+                                    <a href="#" class="dd-item"><spring:message code="left.MyProject"/><span class="scm dd-ar"></span></a>
                                 </dd>
                                 <dd>
-                                    <a href="join" class="dd-item" target="iframe0">我参与的<span class="scm dd-ar"></span></a>
+                                    <a href="join" class="dd-item" target="iframe0"><spring:message code="left.MyJoin.Project"/><span class="scm dd-ar"></span></a>
                                 </dd>
                              <dd>
-                                    <a href="add" class="dd-item" target="iframe0">发起项目<span class="scm dd-ar"></span></a>
+                                    <a href="add" class="dd-item" target="iframe0"><spring:message code="left.Start.Project"/><span class="scm dd-ar"></span></a>
                                 </dd>
                               <!--  <dd>
                                     <a href="#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
@@ -233,7 +233,7 @@
                             <div class="ad-welcom">
                                 <div class="ad-wel-img"><img src="${__static__}/images/min_logo.png" height="36" width="36"></div>
                                 <div class="ad-wel-text">
-                                    <div class="font-wel">欢迎您！<strong>${sessionScope.name}</strong>	<a href="${z:u('/') }?language=${language=='zh_CN'?'en':'zh_CN' }" class="language">${language=='zh_CN'?'English':'Chinese' }</a></div>
+                                    <div class="font-wel"><spring:message code="top.welcome"/><strong>${sessionScope.name}</strong>	<a href="${z:u('/') }?language=${language=='zh_CN'?'en':'zh_CN' }" class="language">${language=='zh_CN'?'English':'Chinese' }</a></div>
                                     <div class="font-wel"><a href='${z:u("logout")}'><strong>【退出】</strong></a></div>
                                 </div>
                             </div>
@@ -241,7 +241,7 @@
                     </div>
                     <div class="ad-main-nav-box">
                         <ul id="breadcrumbs-three">
-                            <li title="首页"><a href="javascript:;" class="dot">首页</a></li>
+                            <li title="首页"><a href="javascript:;" class="dot"><spring:message code="top.index"/></a></li>
                         </ul>
                         <a href="javascript:;" class="scm jian-a J_mainLeft main-sel pre"></a>
                         <div class="ad-main-wraper .J_menuItems">
@@ -255,7 +255,7 @@
                         <a href="javascript:;" class="scm jian-a sub-sel pre j_tabBg J_tabLeft"></a>
                         <div class="ad-sub-wraper page-tabs J_menuTabs">
                             <ul class="ad-sub-list page-tabs-content">
-                                <li class="active J_menuTab" data-id="index_v0.html">首页</li>
+                                <li class="active J_menuTab" data-id="index_v0.html"><spring:message code="top.index"/></li>
                             </ul>
                         </div>
                         <a href="javascript:;" class="scm jian-a next j_tabBg J_tabRight"></a>

@@ -20,7 +20,14 @@
 			<value>messages</value>
 		</property>
 	</bean>
-	
+	<!-- 基于Cookie的本地化解析器 -->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+	 	<property name="cookieMaxAge" value="604800"/>
+	 	<property name="defaultLocale" value="zh_CN"/>
+	 	<property name="cookieName" value="Language"></property>
+	 </bean>
+	<!--<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />-->
+
 	<!-- 拦截器配置 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
@@ -30,13 +37,14 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<bean class="com.zlzkj.app.Interceptor.CoreInterceptor">
-				<property name="exclude">  
+				<!-- <property name="exclude">  
 		            <list>  
-		          <!--     如果请求中是以以下路径开头，则不进行拦截 -->
-		              <value>/index</value>
-		              <value>/user</value>
+		              如果请求中是以以下路径开头，则不进行拦截
+		              <value>/static</value>
+		              <value>/public</value>
+
 		            </list>  
-	        	</property>
+	        	</property> -->
 			</bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
@@ -51,6 +59,15 @@
 		<beans:property name="suffix" value=".jsp" />
 	</bean>
 
+	<!--定义异常处理页面-->
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">public/exception</prop>
+            </props>
+        </property>
+    </bean>
+    
 	<!-- 支持文件上传 -->
 	<bean id="multipartResolver" class="com.zlzkj.core.base.MyMultipartResolver">
 		<property name="defaultEncoding" value="utf-8"></property>	
@@ -58,7 +75,7 @@
 		<property name="maxUploadSize" value="1024000000"></property>
 		<property name="excludeUrl">  
             <list>  
-             <!--  如果请求中包含以下路径，则不进行拦截   -->
+              <!-- 如果请求中包含以下路径，则不进行拦截 -->  
               <value>/vod/upload/flash</value>
             </list>  
        	</property> 
