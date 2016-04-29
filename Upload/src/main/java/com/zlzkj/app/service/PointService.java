@@ -8,8 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.zlzkj.app.mapper.PointMapper;
 import com.zlzkj.app.model.Point;
+import com.zlzkj.app.model.User;
 import com.zlzkj.core.mybatis.SqlRunner;
 import com.zlzkj.core.sql.Row;
+import com.zlzkj.core.sql.SQLBuilder;
 
 @Service
 @Transactional
@@ -57,6 +59,18 @@ public class PointService {
 		String sql="UPDATE x_point SET point='"+point+"',status=1 WHERE account='"+account+"' AND project='"+project+"'";
  return sqlRunner.update(sql);
 		
+	}
+
+	public boolean isExist(String account,String project) {
+		SQLBuilder sqlBuilder = SQLBuilder.getSQLBuilder(Point.class);
+		String sql = sqlBuilder.fields("*").where("account='"+account+"' and project='"+project+"'").selectSql();
+		System.out.println(sql);
+		List<Row> list = sqlRunner.select(sql);
+		if(list.size()==0){
+			return false;
+		}else{
+			return true;
+		}
 	}
 	
 }

@@ -1,6 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://zlzkj.com/tags" prefix="z" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -11,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'prove.jsp' starting page</title>
+    <title>My JSP 'welcome.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -24,18 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-  <body>
-  <c:forEach var="userinfo" items="${userinfo}" varStatus="status" >
-  请先回答密保问题：
-   <form id="check" action="${z:u('check')}" method="post">
-   问题1： ${userinfo.question1} 
-   答案：<input type="text" name="answer1"><br>
-   问题2： ${userinfo.question2} 
-   答案：  <input type="text" name="answer2"><br>
-   问题3： ${userinfo.question3}
-    答案：<input type="text" name="answer3"><br>
-   <input type="submit" value="提交">
-   </form>
-   </c:forEach>
+  <body align="center">
+   欢迎使用本打分系统
   </body>
 </html>

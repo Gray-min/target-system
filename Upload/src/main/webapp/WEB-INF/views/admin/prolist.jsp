@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'prove.jsp' starting page</title>
+    <title>prolist.jsp</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,17 +25,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <c:forEach var="userinfo" items="${userinfo}" varStatus="status" >
-  请先回答密保问题：
-   <form id="check" action="${z:u('check')}" method="post">
-   问题1： ${userinfo.question1} 
-   答案：<input type="text" name="answer1"><br>
-   问题2： ${userinfo.question2} 
-   答案：  <input type="text" name="answer2"><br>
-   问题3： ${userinfo.question3}
-    答案：<input type="text" name="answer3"><br>
-   <input type="submit" value="提交">
-   </form>
-   </c:forEach>
+   <table border="1">
+   <tr><td>项目名称</td><td>已打分</td><td>打分情况</td><td>操作</td></tr>
+   <c:forEach var="mark" items="${mark}" varStatus="status" >
+			<tr>
+				<td>${mark.project}</td>
+				<td>${mark.point }</td>
+				<td>
+				<c:if test="${mark.status=='0' }">
+				未打分
+				</c:if>
+				</td>
+				<td><a href="alluser?project=${mark.project }" target="iframe0">选择</a></td>
+			
+			</tr>
+		</c:forEach>
+		<!-- <input type="submit" value="提交"> -->
+
+		</table>
   </body>
 </html>

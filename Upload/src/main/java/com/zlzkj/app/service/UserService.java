@@ -56,7 +56,7 @@ public class UserService {
 	
 	public List<Row> findAllUser(){
 		
-		String sql = "select * from x_user";
+		String sql = "select * from x_user where role=0";
 		
 		return sqlRunner.select(sql);
 	}

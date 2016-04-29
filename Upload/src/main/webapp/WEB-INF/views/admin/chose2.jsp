@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'prove.jsp' starting page</title>
+    <title>My JSP 'chose.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,17 +25,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <c:forEach var="userinfo" items="${userinfo}" varStatus="status" >
-  请先回答密保问题：
-   <form id="check" action="${z:u('check')}" method="post">
-   问题1： ${userinfo.question1} 
-   答案：<input type="text" name="answer1"><br>
-   问题2： ${userinfo.question2} 
-   答案：  <input type="text" name="answer2"><br>
-   问题3： ${userinfo.question3}
-    答案：<input type="text" name="answer3"><br>
-   <input type="submit" value="提交">
-   </form>
-   </c:forEach>
+   <table>
+  <form action="${z:u('chose2')}" method="post">
+   <c:forEach var="users" items="${users}" varStatus="status" >
+			<tr>
+				<td>${users.account }</td>
+				<td>${users.name }</td>
+				<td>${users.age }</td>
+				<td>${users.gender }</td>
+				<td>选择：<input type="checkbox" name="account" value="${users.account}">
+			</tr>
+		</c:forEach>
+		<%-- <input type="hidden" value="${param.project }"> --%>
+		<input type="submit" value="提交">
+		</form>
+		</table>
+		
   </body>
 </html>

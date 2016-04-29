@@ -40,7 +40,11 @@ public class IndexController extends BaseController{
 		
 		return "index/index";
 	}
-	
+	@RequestMapping(value={"welcome"})
+	public String welcome(Model model,HttpServletRequest request,HttpServletResponse response) {
+		
+		return "welcome/welcome";
+	}
 	/*@RequestMapping(value = "regist")
 	public String regist(Model model,HttpServletRequest request,HttpServletResponse response) {
 		
@@ -149,10 +153,10 @@ public class IndexController extends BaseController{
 		request.getSession().invalidate();
 		return "index/login";
 	}
-	@RequestMapping(value={"/admin"})
+	/*@RequestMapping(value={"/admin"})
 	public String admin(Model model,HttpServletRequest request,HttpServletResponse response) {
 		return "admin/admin";
-	}
+	}*/
 	
 	@RequestMapping(value={"/user"})
 	public String User(Model model,HttpServletRequest request,HttpServletResponse response) {

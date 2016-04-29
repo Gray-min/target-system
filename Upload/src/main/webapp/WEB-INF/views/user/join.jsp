@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <table border="1">
    <tr><td>项目名称</td><td>已打分</td><td>打分情况</td><td>操作</td></tr>
-  <form action="${z:u('chose')}" method="post">
+  
    <c:forEach var="mark" items="${mark}" varStatus="status" >
 			<tr>
 				<td>${mark.project}</td>
@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 		</c:forEach>
 		<!-- <input type="submit" value="提交"> -->
-		</form>
+		
 		</table>
 		
   </body>

@@ -164,6 +164,7 @@ public class UserController extends BaseController{
 		t.setAccount((String)request.getSession().getAttribute("account"));
 		TargetService.save(t);
 		model.addAttribute("users",userService.findAllUser());
+		
 		return "user/chose";
 	}
 	@RequestMapping(value = "point",method=RequestMethod.POST)

@@ -46,7 +46,7 @@
                             <div class="li-item"><em class="scm li-ico ic2"></em><spring:message code="left.Project.Manage" /><span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="#" class="dd-item"><spring:message code="left.MyProject"/><span class="scm dd-ar"></span></a>
+                                    <a href="prolist" class="dd-item" target="iframe0"><spring:message code="left.MyProject"/><span class="scm dd-ar"></span></a>
                                 </dd>
                                 <dd>
                                     <a href="join" class="dd-item" target="iframe0"><spring:message code="left.MyJoin.Project"/><span class="scm dd-ar"></span></a>
@@ -241,7 +241,7 @@
                     </div>
                     <div class="ad-main-nav-box">
                         <ul id="breadcrumbs-three">
-                            <li title="首页"><a href="javascript:;" class="dot"><spring:message code="top.index"/></a></li>
+                            <li title="<spring:message code="top.index"/>"><a href="javascript:;" class="dot"><spring:message code="top.index"/></a></li>
                         </ul>
                         <a href="javascript:;" class="scm jian-a J_mainLeft main-sel pre"></a>
                         <div class="ad-main-wraper .J_menuItems">
@@ -262,7 +262,7 @@
                     </div>
                 </div>
                 <div class="ad-main-comment J_mainContent" id="ad-iframe">
-                    <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="index_v0.html" frameborder="0" data-id="index_v0.html" seamless></iframe>
+                    <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="welcome" frameborder="0" data-id="index_v0.html" seamless></iframe>
                 </div>
     		</div>
     	</div>
