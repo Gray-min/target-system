@@ -58,7 +58,7 @@ public class UserService {
 		
 		String sql = "select * from x_user where role=0";
 		
-		return sqlRunner.select(sql);
+		return sqlRunner.select(sql,1);
 	}
 	
 	public User select_userinfo(User user){
@@ -133,6 +133,7 @@ public User modify_password(String account,String password){
 		Integer count = sqlRunner.count(countSql);
 		return UIUtils.getGridData(count, list);
 	}
+	
 	
 }
 

@@ -37,7 +37,7 @@
                                    
                                 </dd>
                                 <dd>
-                                    <a href="prove" class="dd-item" target="iframe0"><spring:message code="left.User.Security.Question.Modification" /><span class="scm dd-ar"></span></a>
+                                    <a href="test" class="dd-item" target="iframe0"><spring:message code="left.User.Security.Question.Modification" /><span class="scm dd-ar"></span></a>
                                    
                                 </dd>
                             </dl>
