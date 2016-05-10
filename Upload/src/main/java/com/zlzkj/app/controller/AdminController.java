@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +38,7 @@ import com.zlzkj.app.service.PointService;
 import com.zlzkj.app.util.MD5String;
 import com.zlzkj.app.util.Param2Bean;
 import com.zlzkj.app.util.StringUtil;
+import com.zlzkj.app.util.UIUtils;
 import com.zlzkj.app.util.UploadUtils;
 import com.zlzkj.core.base.BaseController;
 import com.zlzkj.core.sql.Row;
@@ -54,7 +58,8 @@ public class AdminController extends BaseController {
 	public String prolist(Model model,HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
 		
 		model.addAttribute("mark",targetService.findUser((String)request.getSession().getAttribute("account")));
-		
+		int status=pointService.isFinish();
+		request.getSession().setAttribute("status", status);
 		return "admin/prolist";
 	}
 
@@ -85,17 +90,22 @@ public class AdminController extends BaseController {
             p.setProject((String)request.getSession().getAttribute("project2"));
            pointService.save(p);}
 	}
+		model.addAttribute("mark",targetService.findUser((String)request.getSession().getAttribute("account")));
+		int status=pointService.isFinish();
+		request.getSession().setAttribute("status", status);
 		return "admin/prolist";
 	}
+	
 	@RequestMapping(value={"reset_pass"})
-	public String resetPass(Model model,HttpServletRequest request,HttpServletResponse response,Integer id) throws Exception {
-		model.addAttribute("users",userService.findAllUser());
-		if (request.getMethod().equals("POST")) {
-			
-			
-		}
-		return "user/resetpass";
+	public String deleteUser(Model model,HttpServletRequest request,HttpServletResponse response) throws IOException {
+		
+		int userId = Integer.parseInt(request.getParameter("userId"));
+		String password=MD5String.getMD5Str("123456");
+		int count = userService.reset_pass(userId,password);
+		//System.out.println(123456);
+		return ajaxReturn(response, count,"",1);
 	}
+	
 	@RequestMapping(value={"test"})
 	public String test(Model model,HttpServletRequest request,HttpServletResponse response) {
 		return "user/test";
@@ -111,4 +121,6 @@ public class AdminController extends BaseController {
 		out.write(jo.toString());
 		//return ajaxReturn(response, jo,"",1);
 	}
+	
+	
 }

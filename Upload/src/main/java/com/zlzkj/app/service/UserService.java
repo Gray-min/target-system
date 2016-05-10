@@ -25,7 +25,7 @@ public class UserService {
 	
 	@Autowired
 	private SqlRunner sqlRunner;
-	
+
 	public long delete(int id){
 		return mapper.deleteByPrimaryKey(id);
 	}
@@ -117,21 +117,18 @@ public User modify_password(String account,String password){
 		}
 		return id;
 	}
-	public Map<String, Object> getUIGridData(Map<String, Object> where, Map<String, String> pageMap) {
-		SQLBuilder sqlBuilder = SQLBuilder.getSQLBuilder(User.class);
-		String sql = sqlBuilder
-				.fields("*")   //这里约定前端grid需要显示多少个具体列，也可以全部*
-				.where(where)
-				.parseUIPageAndOrder(pageMap)
-				.order("id", "desc")
-				.selectSql();
-		List<Row> list = sqlRunner.select(sql);
-		for(Row row : list){
-        	row.put("addTime", Fn.date(row.getInt("addTime"), "yyyy-MM-dd HH:mm:ss"));
-        }
-		String countSql = sqlBuilder.fields("count(*)").where(where).selectSql();
-		Integer count = sqlRunner.count(countSql);
-		return UIUtils.getGridData(count, list);
+
+	public void savepic(String picture, String account) {
+		//System.out.println(account);
+		String sql="update x_user set picture='"+picture+"' where account='"+account+"'";
+		
+		sqlRunner.update(sql);
+	}
+
+	public int reset_pass(int userId,String password) {
+      String sql="update x_user set password='"+password+"' where id='"+userId+"'";
+		
+      return sqlRunner.update(sql);
 	}
 	
 	

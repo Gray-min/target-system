@@ -18,32 +18,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<link rel="stylesheet" type="text/css" href="${__static__ }/css/style.css">
 
   </head>
   
   <body>
-   <table border="1">
-   <tr><td>项目名称</td><td>已打分</td><td>打分情况</td><td>操作</td></tr>
-  
-   <c:forEach var="mark" items="${mark}" varStatus="status" >
-			<tr>
-				<td>${mark.project}</td>
-				<td>${mark.point }</td>
-				<td>
-				<c:if test="${mark.status=='0' }">
-				未打分
+   <div class="main">
+   <div class="project">◆参加的项目</div>
+  <div class="pro">
+  <div class="prod">项目名称</div>
+  <div class="prod">打分情况</div>
+  <div class="prod">操作</div>
+  <c:forEach var="mark" items="${mark}" varStatus="status" >
+	<div class="prod">${mark.project}</div>
+	<c:if test="${mark.status=='0' }">
+		<div class="prod">未打分</div>
+		<div class="prod"><a href="doit?project=${mark.project }" target="iframe0">打分</a> </div>
 				</c:if>
-				</td>
-				<td><a href="doit?project=${mark.project }" target="iframe0">打分</a></td>
-			
-			</tr>
+	<c:if test="${mark.status=='1' }">		
+		<div class="prod">已打分</div>
+		<div class="prod">&nbsp; </div>
+		</c:if>
 		</c:forEach>
-		<!-- <input type="submit" value="提交"> -->
-		
-		</table>
-		
+  </div>
+  </div>
   </body>
 </html>

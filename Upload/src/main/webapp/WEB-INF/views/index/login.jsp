@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<h1>打分系统<sup></sup></h1>
+<h1>通用打分平台<sup></sup></h1>
 
 <div class="login" style="margin-top:50px;">
     

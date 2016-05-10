@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+.main{height:580px; width:1246px; border:#000 solid 1px; margin-left:10px}
+.infoleft{width:500px;height:auto;margin-left:120px;margin-top:70px}
+.inforight{
+	width: 500px;
+	height: 506px;
+	position: absolute;
+	left: 705px;
+	top: 84px;
+}
+.info{width:130px;height:50px;}
+.infot{width:70px;height:50px;float:left}
+.infoc{width:60px;height:50px;float:left}
+.pro{width:1200;height:auto;margin-top:80px;margin-left:30px;}
+.prod{width:400px; height:50px;float:left}
+.chose{width:1200;height:auto;margin-left:30px;margin-top:80px; }
+.chosed{width:200px; height:50px;float:left;}
+.zb{padding-left:20px;width:380px;height:auto;float:left;margin-top:20px}
+.point{padding-left:20px;width:780px;height:auto;float:left;margin-top:20px}
+.project{padding-left:20px;width:1180px;height:auto;float:left;margin-top:20px;}

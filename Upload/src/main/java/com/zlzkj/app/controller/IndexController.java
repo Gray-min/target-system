@@ -132,7 +132,7 @@ public class IndexController extends BaseController{
 				request.getSession().setAttribute("account", account);// 登录成功放入session的内容，供前端页面访问
 				//request.getSession().setAttribute("roleId",roleId);
 				List<Row> list = userService.findUser(account);
-			request.getSession().setAttribute("name",list.get(0).getString("name"));
+				request.getSession().setAttribute("name",list.get(0).getString("name"));
 			   
 				return "index/index";
 			} else

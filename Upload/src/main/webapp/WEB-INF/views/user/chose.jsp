@@ -18,27 +18,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	
+	<link rel="stylesheet" type="text/css" href="${__static__ }/css/style.css">
+	
 
   </head>
   
   <body>
-   <table>
+  
+  <div class="main">
+  <div class="project">◆选择打分人员</div>
+  <div class="chose">
+  <div class="chosed">账号</div>
+  <div class="chosed">姓名</div>
+   <div class="chosed">性别</div>
+    <div class="chosed">年龄</div>
+     <div class="chosed">手机</div>
+      <div class="chosed">选择</div>
   <form action="${z:u('chose')}" method="post">
    <c:forEach var="users" items="${users}" varStatus="status" >
-			<tr>
-				<td>${users.account }</td>
-				<td>${users.name }</td>
-				<td>${users.age }</td>
-				<td>${users.gender }</td>
-				<td>选择：<input type="checkbox" name="account" value="${users.account}">
-			</tr>
+			<div class="chosed">${users.account }</div>
+				<div class="chosed">${users.name }</div>
+				<div class="chosed">${users.gender }</div>
+				<div class="chosed">${users.age }</div>
+				<div class="chosed">${users.phone }</div>
+				<div class="chosed"><input type="checkbox" name="account" value="${users.account}"></div>
 		</c:forEach>
 		<input type="submit" value="提交">
 		</form>
-		</table>
-		
+  
+  </div>
+  </div>
   </body>
 </html>

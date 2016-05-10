@@ -22,7 +22,8 @@
 <body>
     	<div id="admin">
     		<div class="ad-menu" id="ad-menu">
-                <div class="ad-logo"><img src="${__static__}/images/m-logo.png" height="103" width="130"></div>
+                <div class="ad-logo" style="text-align:center;color:#fff;font-size:20px;font-weight: bold;text-shadow: 0px 1px 1px #555;"><img src="${__static__}/images/m-logo.png" height="103" width="235"><spring:message code="top.title"/></div>
+                
                 <div class="ad-list">
                     <ul>
                         <li>
@@ -37,7 +38,7 @@
                                    
                                 </dd>
                                 <dd>
-                                    <a href="test" class="dd-item" target="iframe0"><spring:message code="left.User.Security.Question.Modification" /><span class="scm dd-ar"></span></a>
+                                    <a href="test" class="dd-item" target="iframe0"><spring:message code="left.User.Reset_Password" /><span class="scm dd-ar"></span></a>
                                    
                                 </dd>
                             </dl>
@@ -234,7 +235,7 @@
                                 <div class="ad-wel-img"><img src="${__static__}/images/min_logo.png" height="36" width="36"></div>
                                 <div class="ad-wel-text">
                                     <div class="font-wel"><spring:message code="top.welcome"/><strong>${sessionScope.name}</strong>	<a href="${z:u('/') }?language=${language=='zh_CN'?'en':'zh_CN' }" class="language">${language=='zh_CN'?'English':'Chinese' }</a></div>
-                                    <div class="font-wel"><a href='${z:u("logout")}'><strong>【退出】</strong></a></div>
+                                    <div class="font-wel"><a href='${z:u("logout")}'><strong>【<spring:message code="top.logout"/>】</strong></a></div>
                                 </div>
                             </div>
                         </div>
@@ -262,7 +263,9 @@
                     </div>
                 </div>
                 <div class="ad-main-comment J_mainContent" id="ad-iframe">
+               
                     <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="welcome" frameborder="0" data-id="index_v0.html" seamless></iframe>
+               
                 </div>
     		</div>
     	</div>

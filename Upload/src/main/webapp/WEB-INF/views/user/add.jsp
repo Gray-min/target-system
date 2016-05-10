@@ -18,27 +18,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<link rel="stylesheet" type="text/css" href="${__static__ }/css/style.css">
 
   </head>
   
   <body>
-  
-  
- 发起项目
+  <div class="main">
+  <div class="project">
+  ◆发起项目
+  </div>
+  <div class="project">
   <form id="add" action="${z:u('add2')}" method="post">
-  项目名称：<input type="text" name="project"/><br>
-项目指标数：<input type="text" name="num"><br>
- <input type="submit" value="提交"/>
+<div class="point"> 项目名称：&nbsp;<input type="text" name="project"/></div> 
+<div class="point">项目指标数：<input type="text" name="num"></div>
+ </div>
+ <div class="project"><input type="submit" value="提交"/></div>
   </form>
-  
-  <%-- 登陆
-<form id="login" action="${z:u('login')}" method="post">
-账号：<input name="account" type="text"><br>
-密码：<input name="password" type="password"><br>
-<input type="submit" value="登陆">
-</form> --%>
+  </div>
   </body>
 </html>

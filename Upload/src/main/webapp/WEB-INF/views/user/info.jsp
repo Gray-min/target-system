@@ -18,30 +18,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	
+	<link rel="stylesheet" type="text/css" href="${__static__ }/css/style.css">
+	
 </script>
   </head>
   
   <body>
    <br>
+   <div class="main">
+  <div class="project">◆个人信息</div>
  <c:forEach var="userinfo" items="${userinfo }" varStatus="status" >
-		
-			<%-- <c:if test="${users.sex=='男' }">
-				<tr style="background-color: red">
-			</c:if>
-			<c:if test="${users.sex=='女' }">
-				<tr style="background-color: yellow">
-			</c:if> --%>
-				<td>${userinfo.account }</td>
-				<td>${userinfo.name }</td>
-				<td>${userinfo.age }</td>
-				<td>${userinfo.gender }</td>
-				<td>
-				</td>
-			</tr>
-		</c:forEach>
+  <div class="infoleft">
+		<div class="info">
+        <div class="infot">账号</div>
+        <div class="infoc">${userinfo.account }</div>
+        </div>
+	   <div class="info">
+       <div class="infot">姓名</div>
+       <div class="infoc">${userinfo.name }</div>
+       </div>
+       <div class="info">
+       <div class="infot">年龄</div>
+       <div class="infoc">${userinfo.age }</div>
+       </div>
+       <div class="info">
+       <div class="infot">性别</div>
+       <div class="infoc">${userinfo.gender}</div>
+       </div>
+       <div class="info">
+       <div class="infot">生日</div>
+       <div class="infoc">${userinfo.birth }</div>
+       </div>
+       <div class="info">
+       <div class="infot">电话</div>
+       <div class="inforight">
+        <img width="215px" height="280px" src="${userinfo.picture }">
+        <br>
+        <br>
+         <form id="form" action="savepic" method="post" enctype="multipart/form-data">
+           <input class="jq-validatebox w300" type="file" name="ImportFile"
+				data-options="required:true" />
+           <button type="submit" onClick="submit()">submit</button>
+         </form>
+       </div>
+       <div class="infoc">${userinfo.phone }</div>
+       </div>
+		</div>
+ </c:forEach>
+		</div>
   </body>
   
 </html>

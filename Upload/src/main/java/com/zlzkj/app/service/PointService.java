@@ -72,6 +72,17 @@ public class PointService {
 			return true;
 		}
 	}
+
+	public Integer isFinish() {
+		SQLBuilder sqlBuilder = SQLBuilder.getSQLBuilder(Point.class);
+		String sql = sqlBuilder.fields("*").where("status=0").selectSql();
+		List<Row> list = sqlRunner.select(sql);
+		if(list.size()==0){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
 	
 }
 

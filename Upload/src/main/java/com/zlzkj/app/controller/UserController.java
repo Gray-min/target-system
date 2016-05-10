@@ -49,7 +49,7 @@ public class UserController extends BaseController{
 	@Autowired
 	private TargetService TargetService;
 	
-	/*@RequestMapping(value={"/"},method=RequestMethod.POST)
+	@RequestMapping(value={"savepic"},method=RequestMethod.POST)
 	public String info(Model model,HttpServletRequest request,HttpServletResponse response
 			,@RequestParam("ImportFile") MultipartFile uploadFile) {
 		
@@ -62,17 +62,16 @@ public class UserController extends BaseController{
 			String FileName = UploadUtils.parseFileUrl(info.get("saveName").toString());
 			System.out.println(FileName);
 			
-			Pic pic = new Pic();
+			
 			String FilePath =workPath+ FileName.substring(workPath.length()-1, FileName.length());
 			
-			pic.setId(picService.findALL().size()+1);
-			pic.setUrl(FileName);
-			picService.save(pic);
 			
+			userService.savepic(FileName,(String)request.getSession().getAttribute("account"));
+			model.addAttribute("userinfo",userService.findUser((String)request.getSession().getAttribute("account")));
 			System.out.println("图片绝对路径："+FilePath);
 		}
-		return "index/index";
-	}*/
+		return "user/info";
+	}
 	
 /*	@RequestMapping(value={"/findpic"})
 	public String findPic(Model model,HttpServletRequest request,HttpServletResponse response) {
@@ -181,6 +180,24 @@ public class UserController extends BaseController{
          }
 		Point po=new Point();
 		PointService.savepoint((String)request.getSession().getAttribute("account"), project,point);
+		List<Row> doit=PointService.findtarget(project);
+		String[] t=doit.get(0).getString("target").split("\\@");
+		String[] s=doit.get(0).getString("score").split("\\@");
+		
+		ArrayList<String> target=new ArrayList<String>();
+		for(int i=0;i<t.length;i++)
+		{
+			target.add(t[i]);
+		}
+		
+		ArrayList<String> score=new ArrayList<String>();
+		for(int i=0;i<s.length;i++)
+		{
+			score.add(s[i]);
+		}
+		request.getSession().setAttribute("target",target);
+		request.getSession().setAttribute("score", score);
+		model.addAttribute("doit",PointService.findtarget(project));
 		return "user/join";
 	}
 	@RequestMapping(value = "chose",method=RequestMethod.POST)
@@ -240,12 +257,12 @@ public class UserController extends BaseController{
 		if (request.getMethod().equals("POST")) {
 			HashMap<String, Object> where = new HashMap<String, Object>();
 			where.put("account", request.getSession().getAttribute("account"));
-			where.put("password",request.getParameter("OPass"));
+			where.put("password",MD5String.getMD5Str(request.getParameter("OPass")));
 			User user = userService.getObjByProperties(where);
 			if (StringUtil.isEmpty(user))
 				return ajaxReturn(response, null, "原密码错误", 0);
 			else {
-				user.setPassword(MD5String.getMD5Str(NPass));
+				user.setPassword(MD5String.getMD5Str(request.getParameter("NPass")));
 				int temp = userService.update(user);
 				if (temp == 1)
 					return ajaxReturn(response, null, "修改成功", 1);

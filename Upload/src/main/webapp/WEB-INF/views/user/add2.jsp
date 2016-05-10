@@ -18,30 +18,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<link rel="stylesheet" type="text/css" href="${__static__ }/css/style.css">
 
   </head>
   
   <body>
-  <form id="add" action="${z:u('add')}" method="post">
+  <div class="main">
+  <div class="project">
+  ◆填写指标和分数
+  </div>
+   <form id="add" action="${z:u('add')}" method="post">
   <%
   int num =Integer.parseInt(request.getParameter("num"));
  //String project= request.getParameter("project");
 for(int i=0;i<num;i++)
    {
-   out.print("指标：");
+   out.print("<div class='project'>指标：");
   out.print("<input type='text' name='target'>");
-  out.print("<br>");
+  out.print("&nbsp;&nbsp;");
    out.print("分数：");
   out.print("<input type='text' name='score'>");
-  out.print("<br>");
-//out.print("<input type='text' name='target'>");
+  out.print("</div>");
    }    
 %>
 <input type="hidden" value="${param.project }" name="project">
+<div class="project">
  <input type="submit" value="提交"/>
+ </div> 
   </form>
+  </div>
   </body>
 </html>
