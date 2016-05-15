@@ -27,19 +27,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <form action="${z:u('point')}" method="post">
   <div class="project">
   <c:forEach var="doit" items="${doit}" varStatus="status" >
-          项目名称：${doit.project }
+          ◆项目名称：${doit.project }
           <input type="hidden" name="project" value="${doit.project }">
      </c:forEach>
      </div>
  	 <div class="zb">
 		   <c:forEach var="fuwa" items="  ${sessionScope.target }" >
-                 指标：<c:out value="${fuwa}" /><br>          
+                 指标：<c:out value="${fuwa}" /><br><br>        
 </c:forEach>
 </div>
 <div class="point">
 		   <c:forEach var="fu" items="  ${sessionScope.score }" >
                 总分：<c:out value="${fu}" />&nbsp;&nbsp;
-你的给分：<input type="text" name="point"><br>
+你的给分：<input type="text" name="point"><br><br>
 </c:forEach>
 		</div>		
 	 <div class="project">	<input type="submit" value="提交"></div>

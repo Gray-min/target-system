@@ -1,18 +1,23 @@
 package com.zlzkj.app.controller;
 
 
+import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.zlzkj.app.model.User;
 import com.zlzkj.app.service.PicService;
 import com.zlzkj.app.service.UserService;
 import com.zlzkj.app.service.TargetService;
+import com.zlzkj.app.service.ActionNodeService;
 import com.zlzkj.app.util.MD5String;
 import com.zlzkj.core.base.BaseController;
 import com.zlzkj.core.sql.Row;
@@ -35,9 +40,13 @@ public class IndexController extends BaseController{
 	@Autowired
 	private TargetService TargetService;
 	
-	@RequestMapping(value={"/"})
+	@Autowired
+	private ActionNodeService ActionNodeService;
+	
+@RequestMapping(value={"/"})
 	public String index(Model model,HttpServletRequest request,HttpServletResponse response) {
-		
+model.addAttribute("menu",ActionNodeService.findNode(Integer.valueOf((String) request.getSession().getAttribute("role")),1));
+	model.addAttribute("menu2",ActionNodeService.findNode(Integer.valueOf((String) request.getSession().getAttribute("role")),2));
 		return "index/index";
 	}
 	@RequestMapping(value={"welcome"})
@@ -45,6 +54,7 @@ public class IndexController extends BaseController{
 		
 		return "welcome/welcome";
 	}
+	
 	/*@RequestMapping(value = "regist")
 	public String regist(Model model,HttpServletRequest request,HttpServletResponse response) {
 		
@@ -135,6 +145,8 @@ public class IndexController extends BaseController{
 				List<Row> list = userService.findUser(account);
 				
 				request.getSession().setAttribute("name",list.get(0).getString("name"));
+				request.getSession().setAttribute("role", list.get(0).getString("role"));
+				//System.out.println(list.get(0).getString("role"));
 				return ajaxReturn(response, null, "登录成功", 1);
 			} else
 				return ajaxReturn(response, null, "账号或密码错误", 0);

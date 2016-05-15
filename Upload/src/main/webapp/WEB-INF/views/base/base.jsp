@@ -29,32 +29,36 @@
                         <li>
                             <div class="li-item"><em class="scm li-ico ic1"></em><spring:message code="left.User.Center"/><span class="scm arrow"></span></div>
                             <dl>
+                             <c:forEach var="menu" items="${menu}" varStatus="status" >
                                  <dd>
-                                    <a href="info" class="dd-item" target="iframe0"><spring:message code="left.User.Info" /><span class="scm dd-ar"></span></a>
-                             
+                                    <a href="${menu.url }" class="dd-item" target="iframe0">${menu.name }<span class="scm dd-ar"></span></a>
                                 </dd>
-                                <dd>
+                               <%--  <dd>
                                     <a href="change_pass" class="dd-item" target="iframe0"><spring:message code="left.User.Modify_Password" /><span class="scm dd-ar"></span></a>
                                    
                                 </dd>
                                 <dd>
-                                    <a href="test" class="dd-item" target="iframe0"><spring:message code="left.User.Reset_Password" /><span class="scm dd-ar"></span></a>
+                                    <a href="resetpass" class="dd-item" target="iframe0"><spring:message code="left.User.Reset_Password" /><span class="scm dd-ar"></span></a>
                                    
-                                </dd>
+                                </dd> --%>
+                                </c:forEach>
                             </dl>
                         </li>
                         <li>
                             <div class="li-item"><em class="scm li-ico ic2"></em><spring:message code="left.Project.Manage" /><span class="scm arrow"></span></div>
                             <dl>
+                            <c:forEach var="menu" items="${menu2}" varStatus="status" >
                                 <dd>
-                                    <a href="prolist" class="dd-item" target="iframe0"><spring:message code="left.MyProject"/><span class="scm dd-ar"></span></a>
+                                    <a href="${menu.url }" class="dd-item" target="iframe0">${menu.name }<span class="scm dd-ar"></span></a>
                                 </dd>
-                                <dd>
+                                </c:forEach>
+                              <%--   <dd>
                                     <a href="join" class="dd-item" target="iframe0"><spring:message code="left.MyJoin.Project"/><span class="scm dd-ar"></span></a>
                                 </dd>
                              <dd>
                                     <a href="add" class="dd-item" target="iframe0"><spring:message code="left.Start.Project"/><span class="scm dd-ar"></span></a>
                                 </dd>
+                                 --%>
                               <!--  <dd>
                                     <a href="#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
                                 </dd>
