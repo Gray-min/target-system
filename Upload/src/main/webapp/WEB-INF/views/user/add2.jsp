@@ -19,7 +19,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" type="text/css" href="${__static__ }/css/style.css">
+<script type="text/javascript">
 
+function validate_required(field,alerttxt)
+{
+with (field)
+  {
+  if (value==null||value=="")
+    {alert(alerttxt);return false}
+  else {return true}
+  }
+}
+
+function validate_form(thisform)
+{
+with (thisform)
+  {
+  if (validate_required(target,"指标不能为空！")==false)
+    {target.focus();return false}
+  }
+   if (validate_required(score,"分数不能为空！")==false)
+    {score.focus();return false}
+}
+</script>
   </head>
   
   <body>

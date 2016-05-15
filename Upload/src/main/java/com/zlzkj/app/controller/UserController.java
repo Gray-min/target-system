@@ -272,4 +272,24 @@ public class UserController extends BaseController{
 		}
 		return "user/change_pass";
 	}
+	@RequestMapping(value = "modify_info")
+	public String modifyinfo(Model model,HttpServletRequest request,HttpServletResponse response) {
+		model.addAttribute("userinfo",userService.findUser((String)request.getSession().getAttribute("account")));
+		return "user/modify_info";
+	}
+	
+	@RequestMapping(value="revise_info")
+	public String reviseinfo(Model model,HttpServletRequest request,HttpServletResponse response,User user){
+		user.setId(Integer.valueOf(request.getParameter("id")));
+		//user.setAccount(request.getParameter("account"));
+		user.setName(request.getParameter("name"));
+		user.setAge(Integer.valueOf(request.getParameter("age")));
+		user.setGender(request.getParameter("gender"));
+		//System.out.println(request.getParameter("gender"));
+		user.setBirth(request.getParameter("birth"));
+		user.setPhone(request.getParameter("phone"));
+		userService.updateSelective(user);
+		return ajaxReturn(response, null, "修改成功", 1);
+		
+	}
 }

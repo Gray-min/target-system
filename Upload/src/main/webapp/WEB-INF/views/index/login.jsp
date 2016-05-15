@@ -11,7 +11,31 @@
 <link href="${__static__}/css/login2.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${__static__}/js/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="${__static__}/js/login.js"></script>
+<script type="text/javascript" src="${__static__}/js/jquery.min.js"></script>
+<script type="text/javascript">
+	// 提交
+	function form_submit(){
+		$.ajax({
+			url:"${z:u('login')}",
+			type:"POST",
+			data:{account:$("#u").val(),password:$("#p").val()},
+			dataType:"json",
+			success:function(json){
+				if (json.status == 1) {
+				window.location.href = "${z:u('/')}";
+			} else {
+			    $("#password").val("");
+			}
+				alert(json.info);
+			},
+			error: function(err){
+				alert("err");
+			}
+			
+		});
+	}
 
+</script>
 </head>
 <body>
 
@@ -36,7 +60,7 @@
     
             
 			<div class="login_form">
-				<form action="${z:u("login")}" name="loginform" accept-charset="utf-8" id="login_form" class="loginForm" method="post"><input type="hidden" name="did" value="0"/>
+		<!-- 	<form  name="loginform" accept-charset="utf-8" id="login_form" class="loginForm" method="post"><input type="hidden" name="did" value="0"/>  -->
                <input type="hidden" name="to" value="log"/>
                 <div class="uinArea" id="uinArea">
                 <label class="input-tips" for="u">帐号：</label>
@@ -53,8 +77,8 @@
                 </div>
                 </div>
                
-                <div style="padding-left:50px;margin-top:20px;"><input type="submit" value="登 录" style="width:150px;" class="button_blue"/></div>
-              </form>
+                <div style="padding-left:50px;margin-top:20px;"><button  style="width:150px;" class="button_blue" Onclick="form_submit()">登 录</button></div>
+      <!--      </form> -->
            </div>
            
             	</div>

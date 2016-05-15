@@ -87,13 +87,13 @@ public class IndexController extends BaseController{
 			return "index/login";
 		}
 	}
-	/*@RequestMapping(value = "login")
+/*	@RequestMapping(value = "login")
 	public String login(Model model,HttpServletRequest request,HttpServletResponse response) {
 		
 		return "index/login";
-	}*/
+	}
 	
-	/*@RequestMapping(value = "login",method=RequestMethod.POST)
+	@RequestMapping(value = "login",method=RequestMethod.POST)
 	public String loginUser(Model model,HttpServletRequest request,HttpServletResponse response,HttpSession session,User user) {
 		String account = request.getParameter("account");
 	String password = request.getParameter("password");
@@ -125,19 +125,20 @@ public class IndexController extends BaseController{
 			String account = request.getParameter("account");
 			String password = request.getParameter("password");
 			System.out.println(MD5String.getMD5Str(password));
+			System.out.println(account);
 			if (userService.checkLogin(account, MD5String.getMD5Str(password))) {
-				/*User user = userService.findById(userService.loginId(
-						account, MD5String.getMD5Str(password)));*/
+				User user = userService.findById(userService.loginId(
+						account, MD5String.getMD5Str(password)));
 				//int roleId = user.getRole();
 				request.getSession().setAttribute("account", account);// 登录成功放入session的内容，供前端页面访问
 				//request.getSession().setAttribute("roleId",roleId);
 				List<Row> list = userService.findUser(account);
+				
 				request.getSession().setAttribute("name",list.get(0).getString("name"));
-			   
-				return "index/index";
+				return ajaxReturn(response, null, "登录成功", 1);
 			} else
-				//return ajaxReturn(response, null, "账号或密码错误", 0);
-				return "index/login";
+				return ajaxReturn(response, null, "账号或密码错误", 0);
+				//return "index/login";
 		} else {
 			return "index/login";
 		}
@@ -157,12 +158,4 @@ public class IndexController extends BaseController{
 	public String admin(Model model,HttpServletRequest request,HttpServletResponse response) {
 		return "admin/admin";
 	}*/
-	
-	@RequestMapping(value={"/user"})
-	public String User(Model model,HttpServletRequest request,HttpServletResponse response) {
-		
-
-		
-		return "user/login";
-	}	
 }

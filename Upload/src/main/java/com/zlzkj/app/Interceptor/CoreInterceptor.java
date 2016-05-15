@@ -1,24 +1,20 @@
 package com.zlzkj.app.Interceptor;
 
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.codec.digest.DigestUtils;
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.support.RequestContextUtils;
+
+
 
 
 /*import com.zlzkj.app.service.BaseUrlService;
@@ -45,14 +41,14 @@ public class CoreInterceptor implements HandlerInterceptor{
 	
 	//@Autowired SessionLocaleResolver resolver;
 	
-	/**
+	/*
 	 * 拦截器白名单列表
 	 */
-/*	public String[] exclude; 
+	public String[] exclude; 
 	
 	public void setExclude(String[] exclude) {
 		this.exclude = exclude;
-	}*/
+	}
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
@@ -96,7 +92,7 @@ public class CoreInterceptor implements HandlerInterceptor{
 			//System.out.println("locale3=="+language);
 		}
 		//白名单放行
-		/*if(exclude!=null && exclude.length!=0){
+		if(exclude!=null && exclude.length!=0){
 			String uri = request.getRequestURI().substring(request.getContextPath().length());
 			for(String one:exclude){
 				if(uri.startsWith(one)){
@@ -104,6 +100,7 @@ public class CoreInterceptor implements HandlerInterceptor{
 				}
 			}
 		}
+		/*
 		//解析url验证是否显示左侧
 		//String path = request.getServletPath();  
         //String[] str = path.split("/");
@@ -122,12 +119,15 @@ public class CoreInterceptor implements HandlerInterceptor{
 			//}
 			request.setAttribute("url", urlList);
 		}*/
-
-		return true;
 		
-		
-
-	}
+     /* if(request.getSession().getAttribute("account") != null){
+        	System.out.println(1);
+    	  return true;
+        }else{
+        	response.sendRedirect(request.getContextPath() + "/public/login");
+        }
+        */
+		return true;}
 
 	@Override
 	public void postHandle(HttpServletRequest request,

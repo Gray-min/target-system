@@ -19,7 +19,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" type="text/css" href="${__static__ }/css/style.css">
+<script type="text/javascript">
 
+function validate_required(field,alerttxt)
+{
+with (field)
+  {
+  if (value==null||value=="")
+    {alert(alerttxt);return false}
+  else {return true}
+  }
+}
+
+function validate_form(thisform)
+{
+with (thisform)
+  {
+  if (validate_required(project,"项目名称不能为空！")==false)
+    {project.focus();return false}
+  }
+   if (validate_required(num,"指标数不能为空！")==false)
+    {num.focus();return false}
+}
+</script>
   </head>
   
   <body>
@@ -28,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   ◆发起项目
   </div>
   <div class="project">
-  <form id="add" action="${z:u('add2')}" method="post">
+  <form id="add" action="${z:u('add2')}" onsubmit="return validate_form(this)" method="post">
 <div class="point"> 项目名称：&nbsp;<input type="text" name="project"/></div> 
 <div class="point">项目指标数：<input type="text" name="num"></div>
  </div>
