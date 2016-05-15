@@ -118,7 +118,7 @@ public class IndexController extends BaseController{
 		}
 			return "index/login";
 	}*/
-	@RequestMapping(value = { "login" })
+	@RequestMapping(value = { "index/login" })
 	public String login(Model model, HttpServletRequest request,
 			HttpServletResponse response) {
 		if (request.getMethod() == "POST") {

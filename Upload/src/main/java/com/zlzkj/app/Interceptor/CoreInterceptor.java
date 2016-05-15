@@ -120,13 +120,13 @@ public class CoreInterceptor implements HandlerInterceptor{
 			request.setAttribute("url", urlList);
 		}*/
 		
-     /* if(request.getSession().getAttribute("account") != null){
+      if(request.getSession().getAttribute("account") != null){
         	System.out.println(1);
     	  return true;
         }else{
-        	response.sendRedirect(request.getContextPath() + "/public/login");
+        	response.sendRedirect(request.getContextPath() + "/index/login");
         }
-        */
+        
 		return true;}
 
 	@Override

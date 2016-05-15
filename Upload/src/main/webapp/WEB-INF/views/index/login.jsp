@@ -16,7 +16,7 @@
 	// 提交
 	function form_submit(){
 		$.ajax({
-			url:"${z:u('login')}",
+			url:"${z:u('index/login')}",
 			type:"POST",
 			data:{account:$("#u").val(),password:$("#p").val()},
 			dataType:"json",
