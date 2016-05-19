@@ -37,22 +37,28 @@
 				<input id="account" class="w200" name="name" class="jq-validatebox" readonly="readonly"  value='${sessionScope.account}' type="text" data-options="required:true">
 			</td>
 		</tr>
+		<tr><td colspan="5"></td></tr>
+		<tr><td colspan="5"></td></tr>
 		<tr>
 			<td>原密码：</td>
 			<td colspan="4" >
 				<input id="OPass" class="w200" name="OPass" class="jq-validatebox" value="" type="password" data-options="required:true">
 			</td>
 		</tr>
+		<tr><td colspan="5"></td></tr>
+		<tr><td colspan="5"></td></tr>
 		<tr>
 			<td>新密码：</td>
 			<td colspan="4" >
 				<input id="NPass" class="w200" name="NPass" class="jq-validatebox" value="" type="password" data-options="required:true">
 			</td>
 		</tr>
+		<tr><td colspan="5"></td></tr>
+		<tr><td colspan="5"></td></tr>
 		<tr>
-			<td>&nbsp;</td>
+			<td><button onclick="form_submit()" class="btn btn-small btn-success">确定</button></td>
 			<td>
-				<button onclick="form_submit()" class="btn btn-small btn-success">确定</button>
+				&nbsp;
 				<!-- <a class="btn btn-primary btn-small" href="">返回</a> -->
 			</td>
 		</tr>

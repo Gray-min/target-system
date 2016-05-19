@@ -106,12 +106,23 @@ public class UserController extends BaseController{
 		for(int i=0;i<t.length;i++)
 		{
 			target.add(t[i]);
+		
 		}
 		
 		ArrayList<String> score=new ArrayList<String>();
 		for(int i=0;i<s.length;i++)
 		{
+			score.add("总分：");
 			score.add(s[i]);
+			score.add("<select id='point' style='width:100px;'>");
+			for(int j=Integer.valueOf(s[i]);j>=0;j--)
+			{
+				score.add("<option>"+String.valueOf(j)+"</option>");
+				//score.add(String.valueOf(j));
+				//score.add("</option>");
+			}
+			score.add("</select>");
+			score.add("f");
 		}
 		request.getSession().setAttribute("target",target);
 		request.getSession().setAttribute("score", score);
@@ -167,38 +178,33 @@ public class UserController extends BaseController{
 		return "user/chose";
 	}
 	@RequestMapping(value = "point",method=RequestMethod.POST)
-	public String point(Model model,HttpServletRequest request,HttpServletResponse response) {
+	public String point(Model model,HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
 		String[] p = request.getParameterValues("point");
+	    //p=new String(p.getBytes("ISO-8859-1"),"utf-8");
 		String project =request.getParameter("project");
 		 String point="";
          for(int i=0;i<p.length;i++)
          {
+        	// p[i]=new String(p[i].getBytes("ISO-8859-1"),"utf-8");
+        	//p[i].replaceAll(" ", "");
+        	//p[i].trim();
+        System.out.println(p[i]);
          if(i==p.length-1){point=point+p[i];}
          else{
         point=point+p[i]+"@";}
          //System.out.println(target[i]);
          }
-		Point po=new Point();
-		PointService.savepoint((String)request.getSession().getAttribute("account"), project,point);
-		List<Row> doit=PointService.findtarget(project);
-		String[] t=doit.get(0).getString("target").split("\\@");
-		String[] s=doit.get(0).getString("score").split("\\@");
+		//Point po=new Point();
+      List<Row> l=PointService.isFinish(project);
+      if(l.size()<=1){
+    	  PointService.savepoint((String)request.getSession().getAttribute("account"), project,point);
+    	  TargetService.finishtarget(project);
+      }
+      else{ 
+    	  PointService.savepoint((String)request.getSession().getAttribute("account"), project,point);
+      }
 		
-		ArrayList<String> target=new ArrayList<String>();
-		for(int i=0;i<t.length;i++)
-		{
-			target.add(t[i]);
-		}
-		
-		ArrayList<String> score=new ArrayList<String>();
-		for(int i=0;i<s.length;i++)
-		{
-			score.add(s[i]);
-		}
-		request.getSession().setAttribute("target",target);
-		request.getSession().setAttribute("score", score);
-		model.addAttribute("doit",PointService.findtarget(project));
-		return "user/join";
+      return ajaxReturn(response, null, "打分成功", 0);
 	}
 	@RequestMapping(value = "chose",method=RequestMethod.POST)
 	public String chose(Model model,HttpServletRequest request,HttpServletResponse response) {
@@ -232,7 +238,7 @@ public class UserController extends BaseController{
 	  userService.modify_password(user.getAccount(),password);
 		return "user/modify_password";
 	}
-	@RequestMapping(value = "check",method=RequestMethod.POST)
+	/*@RequestMapping(value = "check",method=RequestMethod.POST)
 	public String check(Model model,HttpServletRequest request,HttpServletResponse response,User user) {
 		String answer1= request.getParameter("answer1");
 		String answer2= request.getParameter("answer2");
@@ -245,7 +251,7 @@ public class UserController extends BaseController{
 			return "user/modify_password";
 		}
 		return "user/prove";
-	}
+	}*/
 /*	@RequestMapping(value = "change_pass")
 	public String changePass(Model model,HttpServletRequest request,HttpServletResponse response) {
 		

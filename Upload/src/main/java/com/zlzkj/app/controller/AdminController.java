@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,8 +59,8 @@ public class AdminController extends BaseController {
 	public String prolist(Model model,HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
 		
 		model.addAttribute("mark",targetService.findUser((String)request.getSession().getAttribute("account")));
-		int status=pointService.isFinish();
-		request.getSession().setAttribute("status", status);
+	
+		
 		return "admin/prolist";
 	}
 
@@ -90,10 +91,9 @@ public class AdminController extends BaseController {
             p.setProject((String)request.getSession().getAttribute("project2"));
            pointService.save(p);}
 	}
-		model.addAttribute("mark",targetService.findUser((String)request.getSession().getAttribute("account")));
-		int status=pointService.isFinish();
-		request.getSession().setAttribute("status", status);
-		return "admin/prolist";
+		//model.addAttribute("mark",targetService.findUser((String)request.getSession().getAttribute("account")));
+		
+		return ajaxReturn(response, null, "选择成功", 0);
 	}
 	
 	@RequestMapping(value={"reset_pass"})
@@ -121,6 +121,46 @@ public class AdminController extends BaseController {
 		out.write(jo.toString());
 		//return ajaxReturn(response, jo,"",1);
 	}
-	
+	@RequestMapping(value={"finish"})
+	public String finish(Model model,HttpServletRequest request,HttpServletResponse response) throws IOException {
+		
+		String project=request.getParameter("project");
+		project=new String(project.getBytes("ISO-8859-1"),"utf-8");
+		
+		model.addAttribute("project", pointService.detail(project));
+		
+		List<Row> detail=pointService.detail(project);
+		List<Row> doit=pointService.findtarget(project);
+		int zf=0;
+		String[] t=doit.get(0).getString("target").split("\\@");
+		ArrayList<String> target=new ArrayList<String>();
+		for(int i=0;i<t.length;i++)
+		{
+			target.add(t[i]);
+		}
+		request.getSession().setAttribute("target",target);
+		ArrayList<String> score=new ArrayList<String>();
+		for(int i=0;i<detail.size();i++)
+		{
+		
+		String[] s=detail.get(i).getString("point").split("\\@");
+	//	System.out.println(s.toString());
+		//request.getSession().setAttribute("length", s.length);
+		int sum=0;
+		for(int j=0;j<s.length;j++)
+		{
+			//System.out.println("这是第"+j+"个数据："+s[j]);
+			score.add(s[j]);
+		sum=Integer.valueOf(s[j])+sum;
+		}
+		zf+=sum;
+		score.add(String.valueOf(sum));
+		score.add("f");
+		}
+		//System.out.println(score.toString());
+		request.getSession().setAttribute("score", score);
+		request.getSession().setAttribute("zf", zf);
+	return "admin/finish";
+	}
 	
 }

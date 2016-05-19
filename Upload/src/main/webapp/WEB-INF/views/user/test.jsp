@@ -21,7 +21,7 @@ window.onload=function(){
 		$.each(result.all_user,function(index,content){
 			var div_ = "<div userId="+content.id+" >"+
 							"<div>"+
-								"id :"+"&nbsp;"+content.id+"&nbsp;&nbsp;&nbsp;name:&nbsp; "+content.name+"&nbsp;&nbsp;&nbsp;account:&nbsp;"+content.account+"&nbsp;&nbsp;&nbsp;<input type=\"button\" onclick=\"deleteUser(this,"+content.id+")\" value=\"重置密码\" />"
+								"id :"+"&nbsp;"+content.id+"&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp; "+content.name+"&nbsp;&nbsp;&nbsp;&nbsp;account:&nbsp;"+content.account+"&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"button\" onclick=\"deleteUser(this,"+content.id+")\" value=\"重置密码\" />"
 							"</div>"+
 							
 							//"<div><input type=\"button\" onclick=\"deleteUser(this,"+content.id+")\" value=\"删除\" /></div>"+ 

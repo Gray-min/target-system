@@ -47,6 +47,11 @@ public class TargetService {
 		String sql = "select * from x_target where account='"+account+"'";
 		return sqlRunner.select(sql);
 	}
+
+	public Integer finishtarget(String project) {
+		String sql = "update x_target set status=0 where project='"+project+"'";
+		return sqlRunner.update(sql);
+	}
 	
 	/*public List<Row> findPoint(String account,String password){
 		

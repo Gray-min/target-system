@@ -73,15 +73,16 @@ public class PointService {
 		}
 	}
 
-	public Integer isFinish() {
+	public List<Row> isFinish(String project) {
 		SQLBuilder sqlBuilder = SQLBuilder.getSQLBuilder(Point.class);
-		String sql = sqlBuilder.fields("*").where("status=0").selectSql();
-		List<Row> list = sqlRunner.select(sql);
-		if(list.size()==0){
-			return 1;
-		}else{
-			return 0;
-		}
+		String sql = sqlBuilder.fields("*").where("status=0 and project='"+project+"'").selectSql();
+		return sqlRunner.select(sql);
+		
+	}
+
+	public List<Row> detail(String project) {
+		String sql="SELECT * FROM x_point WHERE project ='"+project+"'";
+		return sqlRunner.select(sql);
 	}
 	
 }

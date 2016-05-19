@@ -208,23 +208,23 @@
                             <div class="ad-change-btn"><a id="ad-list" href="javascript:;" class="scm ad-list-btn"></a></div>
                             <div class="ad-search-box clear">
                                 <div class="ad-search-sel">
-                                    <select>
+                                  <!--   <select>
                                         <option>新闻类</option>
                                         <option>新闻吩咐道类</option>
                                         <option>新闻广告费类</option>
                                         <option>新闻苟富贵类</option>
-                                    </select>
+                                    </select> -->
                                 </div>
                                 <div class="ad-search-cha">
-                                    <input type="text" class="ad-search-input" placeholder="请输入你要查找的内容">
-                                    <input type="submit" class="scm ad-search-btn" value=""> 
+                                   <!--  <input type="text" class="ad-search-input" placeholder="请输入你要查找的内容">
+                                    <input type="submit" class="scm ad-search-btn" value="">  -->
                                 </div>
                             </div>
                         </div>
                         <div class="ad-top-right">
                             <div class="ad-notice">
                                 <ul>
-                                    <li>
+                                    <!-- <li>
                                         <a href="javascript:;" class="scm nt1"><span class="scm nt-count dot">12</span></a>
                                     </li>
                                     <li>
@@ -232,7 +232,7 @@
                                     </li>
                                     <li>
                                         <a href="javascript:;" class="scm nt3"><span class="scm nt-count dot">12</span></a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                             <div class="ad-welcom">

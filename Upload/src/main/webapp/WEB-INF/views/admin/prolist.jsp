@@ -33,11 +33,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="prod">操作</div>
    <c:forEach var="mark" items="${mark}" varStatus="status" >
 			<div class="prod">${mark.project}</div>
-             <c:if test="${sessionScope.status=='1' }">
+             <c:if test="${mark.status=='0' }">
 				<div class="prod">已完成</div>
-				<div class="prod">&nbsp;</div>
+				<div class="prod"><a href="finish?project=${mark.project }" target="iframe0">详细</a></div>
 				</c:if>
-			<c:if test="${sessionScope.status=='0' }">
+			<c:if test="${mark.status=='1' }">
 			<div class="prod">进行中</div>
 			<div class="prod"><a href="alluser?project=${mark.project }" target="iframe0">选择</a></div>
 			</c:if>

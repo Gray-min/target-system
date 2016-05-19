@@ -61,9 +61,9 @@
 
 	 <!--定义异常处理页面-->
     <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-<!--  <property name="exceptionMappings">
+<!-- <property name="exceptionMappings">
            <props>
-                <prop key="java.lang.Exception">public/exception</prop>
+                <prop key="java.lang.Exception">public/500</prop>
             </props> 
         </property> -->
     </bean>
