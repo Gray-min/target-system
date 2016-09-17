@@ -35,13 +35,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="prod">${mark.project}</div>
              <c:if test="${mark.status=='0' }">
 				<div class="prod">已完成</div>
-				<div class="prod"><a href="finish?project=${mark.project }" target="iframe0">详细</a></div>
+				<div class="prod"><a href="finish?project=${mark.project }" target="iframe0">详细</a>/<a href="delete?project=${mark.project }" target="iframe0">删除</a></div>
 				</c:if>
 			<c:if test="${mark.status=='1' }">
 			<div class="prod">进行中</div>
-			<div class="prod"><a href="alluser?project=${mark.project }" target="iframe0">选择</a></div>
+			<div class="prod"><a href="alluser?project=${mark.project }" target="iframe0">选择</a>/<a href="delete?project=${mark.project }" target="iframe0">删除</a></div>
 			</c:if>
 		</c:forEach>
+		
+		 	<c:if test="${param.currentpage>1 }">
+   		<a href="prolist?&currentpage=${param.currentpage-1}">上一页</a>
+   	</c:if>
+   	<c:if test="${param.currentpage<=1 }">
+   		<a>上一页</a>
+   	</c:if>
+   	
+   	<c:if test="${totalpage>param.currentpage }">
+   		<a href="prolist?&currentpage=${param.currentpage+1}">下一页</a>
+   	</c:if>
+   	<c:if test="${totalpage<=param.currentpage }">
+   		<a>下一页</a>
+   	</c:if>
   </div>
   </div>
    

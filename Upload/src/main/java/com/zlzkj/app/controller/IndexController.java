@@ -47,7 +47,8 @@ public class IndexController extends BaseController{
 	public String index(Model model,HttpServletRequest request,HttpServletResponse response) {
 model.addAttribute("menu",ActionNodeService.findNode(Integer.valueOf((String) request.getSession().getAttribute("role")),1));
 	model.addAttribute("menu2",ActionNodeService.findNode(Integer.valueOf((String) request.getSession().getAttribute("role")),2));
-		return "index/index";
+	model.addAttribute("menu3",ActionNodeService.findNode(Integer.valueOf((String) request.getSession().getAttribute("role")),3));
+	return "index/index";
 	}
 	@RequestMapping(value={"welcome"})
 	public String welcome(Model model,HttpServletRequest request,HttpServletResponse response) {
@@ -171,3 +172,5 @@ model.addAttribute("menu",ActionNodeService.findNode(Integer.valueOf((String) re
 		return "admin/admin";
 	}*/
 }
+
+//编写者：张佳旻

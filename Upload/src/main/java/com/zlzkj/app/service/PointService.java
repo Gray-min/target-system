@@ -84,6 +84,39 @@ public class PointService {
 		String sql="SELECT * FROM x_point WHERE project ='"+project+"'";
 		return sqlRunner.select(sql);
 	}
+
+	public int allpoint_total(String account) {
+		int total=0;
+		String sql = "select count(*) as total from x_point where account='"+account+"' and status!=2";
+		total = sqlRunner.select(sql).get(0).getInt("total");
+		return total;
+	}
+
+	public List<Row> selectAllpoint(int start, int pagesize, int user_status,String account) {
+		String sql = "select * from x_point  where account='"+account+"' and status!=2"
+				+ " ORDER BY id desc limit "+start+","+pagesize+"";
+		List<Row> list = sqlRunner.select(sql);
+		return list;
+	}
+
+	public void mydelete(String project) {
+		String sql="update x_point set status=2 where project='"+project+"'";
+		sqlRunner.update(sql);
+	}
+
+	public void myrestore(String project) {
+		String sql="update x_point set status=0 where project='"+project+"'";
+		sqlRunner.update(sql);
+	}
+	public void myrestore2(String project) {
+		String sql="update x_point set status=1 where project='"+project+"'";
+		sqlRunner.update(sql);
+	}
+	public List<Row> find(String project) {
+		String sql="select *from x_point where project='"+project+"'";
+		return sqlRunner.select(sql);
+	}
 	
 }
 
+//编写者：张佳旻

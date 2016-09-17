@@ -56,7 +56,7 @@ public class UserService {
 	
 	public List<Row> findAllUser(){
 		
-		String sql = "select * from x_user where role=0";
+		String sql = "select * from x_user";
 		
 		return sqlRunner.select(sql,1);
 	}
@@ -130,7 +130,21 @@ public User modify_password(String account,String password){
 		
       return sqlRunner.update(sql);
 	}
-	
+	public int alluser_total(int user_status){
+		int total=0;
+		String sql = "select count(*) as total from x_user where role=0";
+		total = sqlRunner.select(sql).get(0).getInt("total");
+		return total;
+	}
+
+	public List<Row> selectAlluser(int start,int pagesize,int user_status){
+		//start是从第几条开始 	desc倒序   asc正序
+		String sql = "select * from x_user where role=0"
+				+ " ORDER BY id desc limit "+start+","+pagesize+"";
+		List<Row> list = sqlRunner.select(sql);
+		return list;
+	}
+
 	
 }
-
+//编写者：张佳旻

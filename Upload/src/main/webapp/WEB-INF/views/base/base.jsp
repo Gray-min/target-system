@@ -68,25 +68,23 @@
                             </dl>
                         </li>
                         <li>
-                         <!--    <div class="li-item"><em class="scm li-ico ic3"></em>啊啊啊啊<span class="scm arrow"></span></div>
+                       
+      <c:choose>
+    <c:when test="${sessionScope.role==0}">
+    </c:when>
+    <c:otherwise>
+     <div class="li-item"><em class="scm li-ico ic3"></em>用户管理<span class="scm arrow"></span></div>
+    </c:otherwise>
+    </c:choose>
+                        
                             <dl>
+                               <c:forEach var="menu" items="${menu3}" varStatus="status" >
                                 <dd>
-                                    <a href="#" class="dd-item">校友高级管理<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="index_v1.html" data-index="1">测试用例一</li>
-                                        <li class="J_menuItem" href="index_v2.html" data-index="2">测试用例二</li>
-                                        <li class="J_menuItem" href="index_v3.html" data-index="3">测试用例三</li>
-                                        <li class="J_menuItem" href="index_v4.html" data-index="4">测试用例四</li>
-                                        <li class="J_menuItem" href="index_v5.html" data-index="5">测试用例五</li>
-                                        <li class="J_menuItem" href="index_v6.html" data-index="6">测试用例六</li>
-                                        <li class="J_menuItem" href="index_v7.html" data-index="7">测试用例七</li>
-                                        <li class="J_menuItem" href="index_v8.html" data-index="8">测试用例八</li>
-                                        <li class="J_menuItem" href="index_v9.html" data-index="9">测试用例九</li>
-                                        <li class="J_menuItem" href="index_v10.html" data-index="10">测试用例十</li>
-                                        <li class="J_menuItem" href="index_v11.html" data-index="11">测试用例十一</li>
-                                    </ul>
+                                    <a href="${menu.url }" class="dd-item" target="iframe0">${menu.name }<span class="scm dd-ar"></span></a>
                                 </dd>
-                                <dd>
+                                </c:forEach>
+                                </dl></li>
+                               <!--     <dd>
                                     <a href="#" class="dd-item">校友查询<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
                                         <li class="J_menuItem" href="index_v1.html" data-index="1">测试用例一</li>

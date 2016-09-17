@@ -22,7 +22,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-  <body align="center">
-   欢迎使用本打分系统
+  <body align="center" style="font-size:20px">
+  <br>
+    <br>
+      <br>
+        <br>
+   欢迎使用本通用打分平台
   </body>
 </html>
